@@ -133,8 +133,11 @@ struct cdvdStruct {
 	u32 SeekToSector;	// Holds the destination sector during seek operations.
 	u32 ReadTime;		// Avg. time to read one block of data (in Iop cycles)
 	bool Spinning;		// indicates if the Cdvd is spinning or needs a spinup delay
-};
 
+	// TrayChanged is true if the tray has been opened since the
+	// game's previous call to SCMD 0x05 (e.g., by calling sceCdTrayReq(CHECK, _)).
+	bool TrayChanged;
+};
 
 extern void cdvdReset();
 extern void cdvdVsync();
